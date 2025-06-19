@@ -1,6 +1,0 @@
-@DevToBeCurious.FollowsCourses.WebApi.UI_HostAddress = http://localhost:5109
-
-GET {{DevToBeCurious.FollowsCourses.WebApi.UI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
