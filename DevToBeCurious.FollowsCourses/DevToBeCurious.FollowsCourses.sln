@@ -1,9 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36109.1 d17.14
+VisualStudioVersion = 17.14.36109.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevToBeCurious.FollowsCourses.WebApi.UI", "DevToBeCurious.FollowsCourses.WebApi.UI\DevToBeCurious.FollowsCourses.WebApi.UI.csproj", "{56916947-573F-4547-B83A-271A153C0F47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTBC.FC.Sessions.Application", "Libs\DTBC.FC.Sessions.Application\DTBC.FC.Sessions.Application.csproj", "{74A19112-78C4-4666-BEE9-DB097BB1F8FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTBC.FC.Sessions.Infrastructure", "DTBC.FC.Sessions.Infrastructure\DTBC.FC.Sessions.Infrastructure.csproj", "{0ACA9D06-8506-4C5A-8353-B47FD9CDC28A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTBC.FC.Sessions.Models", "DTBC.FC.Sessions.Models\DTBC.FC.Sessions.Models.csproj", "{43B6FD1A-48BC-4C8C-A38B-F9FD96D7F946}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sessions", "Sessions", "{A57FFDF9-E0E4-444E-87C1-102E930B3047}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5288BB31-B692-4D97-BE84-66F49954D1EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTBC.FC.Sessions.Tests", "DTBC.FC.Sessions.Tests\DTBC.FC.Sessions.Tests.csproj", "{A082AFED-6730-40CB-87C9-F1D0A97270E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +29,33 @@ Global
 		{56916947-573F-4547-B83A-271A153C0F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56916947-573F-4547-B83A-271A153C0F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56916947-573F-4547-B83A-271A153C0F47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74A19112-78C4-4666-BEE9-DB097BB1F8FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74A19112-78C4-4666-BEE9-DB097BB1F8FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74A19112-78C4-4666-BEE9-DB097BB1F8FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74A19112-78C4-4666-BEE9-DB097BB1F8FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ACA9D06-8506-4C5A-8353-B47FD9CDC28A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ACA9D06-8506-4C5A-8353-B47FD9CDC28A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ACA9D06-8506-4C5A-8353-B47FD9CDC28A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ACA9D06-8506-4C5A-8353-B47FD9CDC28A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43B6FD1A-48BC-4C8C-A38B-F9FD96D7F946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43B6FD1A-48BC-4C8C-A38B-F9FD96D7F946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43B6FD1A-48BC-4C8C-A38B-F9FD96D7F946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43B6FD1A-48BC-4C8C-A38B-F9FD96D7F946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A082AFED-6730-40CB-87C9-F1D0A97270E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A082AFED-6730-40CB-87C9-F1D0A97270E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A082AFED-6730-40CB-87C9-F1D0A97270E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A082AFED-6730-40CB-87C9-F1D0A97270E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{74A19112-78C4-4666-BEE9-DB097BB1F8FE} = {A57FFDF9-E0E4-444E-87C1-102E930B3047}
+		{0ACA9D06-8506-4C5A-8353-B47FD9CDC28A} = {A57FFDF9-E0E4-444E-87C1-102E930B3047}
+		{43B6FD1A-48BC-4C8C-A38B-F9FD96D7F946} = {A57FFDF9-E0E4-444E-87C1-102E930B3047}
+		{A57FFDF9-E0E4-444E-87C1-102E930B3047} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{5288BB31-B692-4D97-BE84-66F49954D1EE} = {A57FFDF9-E0E4-444E-87C1-102E930B3047}
+		{A082AFED-6730-40CB-87C9-F1D0A97270E2} = {5288BB31-B692-4D97-BE84-66F49954D1EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA58E54D-9527-4507-A2DF-65B60084B55B}
