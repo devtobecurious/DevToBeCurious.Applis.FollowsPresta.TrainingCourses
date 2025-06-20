@@ -1,4 +1,6 @@
 ﻿using DTBC.FC.Sessions.Application;
+using DTBC.FC.Sessions.Application.Commands;
+using DTBC.FC.Sessions.Infrastructure.Commands;
 using DTBC.FC.Sessions.Models;
 
 namespace DTBC.FC.Sessions.Tests
@@ -13,7 +15,7 @@ namespace DTBC.FC.Sessions.Tests
         /// <see cref="AddSessionMachine"/> class, and assigned a valid identifier. The session's  properties, such as
         /// start time, end time, and status, are initialized to simulate a  complete session setup.</remarks>
         [Fact]
-        public void ShouldCreateACompleteSession()
+        public async Task ShouldCreateACompleteSession()
         {
             var session = new Session
             {
@@ -23,11 +25,12 @@ namespace DTBC.FC.Sessions.Tests
                 Status = SessionStatus.Draft,
                 Location = Location.Online,
                 TrainingCourseId = 1,
-                NbDays = 3,
+                NbDays = 3
             };
 
-            AddSessionMachine addSessionMachine = new();
-            addSessionMachine.AddOne(session);
+            IAddOneSessionRepository addOneSessionRepo = new DbContextAddOneSessionRepository();
+            AddSessionMachine addSessionMachine = new(addOneSessionRepo);
+            await addSessionMachine.AddOne(session);
 
             Assert.NotNull(session);
             Assert.Equal(1, session.Id);
