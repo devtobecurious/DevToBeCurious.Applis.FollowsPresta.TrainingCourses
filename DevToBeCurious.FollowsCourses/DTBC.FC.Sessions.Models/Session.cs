@@ -13,6 +13,10 @@ namespace DTBC.FC.Sessions.Models
     /// details such as the start and end times, the number of days it spans, and its current status. </remarks>
     public class Session
     {
+        #region Fields
+        public static Session Draft = new() { StartDate = DateTime.Now, EndDate = DateTime.Now.AddDays(3), NbDays = 3 };
+        #endregion
+
         #region Properties
         public int Id { get; set; } = 0;
         public int CourseCenterId { get; set; } = 0;

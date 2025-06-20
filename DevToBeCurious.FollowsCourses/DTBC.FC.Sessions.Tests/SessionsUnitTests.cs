@@ -20,16 +20,7 @@ namespace DTBC.FC.Sessions.Tests
         [Fact]
         public async Task ShouldCreateACompleteSession()
         {
-            var session = new Session
-            {
-                CourseCenterId = 1,
-                StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddHours(1),
-                Status = SessionStatus.Draft,
-                Location = Location.Online,
-                TrainingCourseId = 1,
-                NbDays = 3
-            };
+            var session = SessionInitializer.PrepareOne();
 
             //SQLitePCL.Batteries.Init();
 
