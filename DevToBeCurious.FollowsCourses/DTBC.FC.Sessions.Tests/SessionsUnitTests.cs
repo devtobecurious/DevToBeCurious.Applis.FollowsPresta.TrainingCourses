@@ -1,5 +1,6 @@
 ﻿using DTBC.FC.Sessions.Application;
 using DTBC.FC.Sessions.Application.Commands;
+using DTBC.FC.Sessions.Application.Exceptions;
 using DTBC.FC.Sessions.Infrastructure;
 using DTBC.FC.Sessions.Infrastructure.Commands;
 using DTBC.FC.Sessions.Models;
@@ -34,6 +35,24 @@ namespace DTBC.FC.Sessions.Tests
 
             Assert.NotNull(session);
             Assert.Equal(1, session.Id);
+        }
+
+        [Fact]
+        public async Task ShouldGenerateErrorWhenTrainingCourseIdEmptyOrNull()
+        {
+            var session = SessionInitializer.PrepareOne();
+
+            DbContextOptionsBuilder<SessionsDbContext> optionsBuilder = new();
+            optionsBuilder.UseInMemoryDatabase("SessionsTestDb");
+            var context = new SessionsDbContext(optionsBuilder.Options);
+
+            IAddOneSessionRepository addOneSessionRepo = new DbContextAddOneSessionRepository(context);
+            AddSessionMachine addSessionMachine = new(addOneSessionRepo);
+
+            await Assert.ThrowsAsync<TrainingCourseIdRequiredException>(async () =>
+            {
+                await addSessionMachine.AddOne(session);
+            });
         }
         #endregion
     }

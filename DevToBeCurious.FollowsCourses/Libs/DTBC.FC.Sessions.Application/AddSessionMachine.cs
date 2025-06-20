@@ -1,4 +1,5 @@
 ﻿using DTBC.FC.Sessions.Application.Commands;
+using DTBC.FC.Sessions.Application.Exceptions;
 using DTBC.FC.Sessions.Models;
 
 using System;
@@ -26,6 +27,12 @@ namespace DTBC.FC.Sessions.Application
         public async Task<Session> AddOne(Session session)
         {
             ArgumentException.ThrowIfNullOrEmpty(nameof(session), "Session cannot be null or empty.");
+
+            if (session.TrainingCourseId <= 0)
+            {
+                throw new TrainingCourseIdRequiredException("Training course ID must be greater than zero.");
+            }
+
             await addOneSession.AddOneAsync(session);
 
             return session;
