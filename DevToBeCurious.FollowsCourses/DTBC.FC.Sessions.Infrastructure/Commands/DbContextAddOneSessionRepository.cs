@@ -12,14 +12,13 @@ namespace DTBC.FC.Sessions.Infrastructure.Commands
     /// <summary>
     /// Repository for adding a single session to the database context.
     /// </summary>
-    public class DbContextAddOneSessionRepository : IAddOneSessionRepository
+    public class DbContextAddOneSessionRepository(SessionsDbContext context) : IAddOneSessionRepository
     {
         #region Public methods
         public Task AddOneAsync(Session session)
         {
-            session.Id = 1;
-
-            return Task.CompletedTask;
+            context.Sessions.Add(session);
+            return context.SaveChangesAsync();
         }
         #endregion
     }

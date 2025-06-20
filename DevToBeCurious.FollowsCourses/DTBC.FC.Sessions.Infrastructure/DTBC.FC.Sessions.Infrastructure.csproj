@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DTBC.FC.Sessions.Models\DTBC.FC.Sessions.Models.csproj" />
     <ProjectReference Include="..\Libs\DTBC.FC.Sessions.Application\DTBC.FC.Sessions.Application.csproj" />
   </ItemGroup>

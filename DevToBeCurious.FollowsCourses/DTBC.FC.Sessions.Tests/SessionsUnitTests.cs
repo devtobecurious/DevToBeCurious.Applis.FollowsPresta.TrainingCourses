@@ -1,7 +1,10 @@
 ﻿using DTBC.FC.Sessions.Application;
 using DTBC.FC.Sessions.Application.Commands;
+using DTBC.FC.Sessions.Infrastructure;
 using DTBC.FC.Sessions.Infrastructure.Commands;
 using DTBC.FC.Sessions.Models;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace DTBC.FC.Sessions.Tests
 {
@@ -20,15 +23,21 @@ namespace DTBC.FC.Sessions.Tests
             var session = new Session
             {
                 CourseCenterId = 1,
-                StartTime = DateTime.Now,
-                EndTime = DateTime.Now.AddHours(1),
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddHours(1),
                 Status = SessionStatus.Draft,
                 Location = Location.Online,
                 TrainingCourseId = 1,
                 NbDays = 3
             };
 
-            IAddOneSessionRepository addOneSessionRepo = new DbContextAddOneSessionRepository();
+            //SQLitePCL.Batteries.Init();
+
+            DbContextOptionsBuilder<SessionsDbContext> optionsBuilder = new();
+            optionsBuilder.UseInMemoryDatabase("SessionsTestDb");
+            var context = new SessionsDbContext(optionsBuilder.Options);
+
+            IAddOneSessionRepository addOneSessionRepo = new DbContextAddOneSessionRepository(context);
             AddSessionMachine addSessionMachine = new(addOneSessionRepo);
             await addSessionMachine.AddOne(session);
 
