@@ -24,10 +24,7 @@ namespace DTBC.FC.Sessions.Application
         /// <exception cref="ArgumentNullException"></exception>
         public Session AddOne(Session session)
         {
-            if (session == null)
-            {
-                throw new ArgumentNullException(nameof(session), "Session cannot be null.");
-            }
+            ArgumentException.ThrowIfNullOrEmpty(nameof(session), "Session cannot be null or empty.");
             session.Id = 1;
 
             return session;
