@@ -13,6 +13,10 @@
     public class Location
     {
         #region Fields
+        private static readonly List<Location> _locationsList =
+        [
+            Online
+        ];
         public static Location Online = new(1, "Distanciel");
         #endregion
 
@@ -25,6 +29,17 @@
         #endregion
 
         #region Public methods
+        /// <summary>
+        /// Retrieves a single <see cref="Location"/> object by its unique identifier.
+        /// </summary>
+        /// <param name="id">The unique identifier of the location to retrieve.</param>
+        /// <returns>The <see cref="Location"/> object with the specified identifier.</returns>
+        /// <exception cref="ArgumentException">Thrown if no location with the specified <paramref name="id"/> exists.</exception>
+        public static Location GetOne(int id)
+        {
+            return _locationsList.First(location => location.Id == id) ?? throw new ArgumentException($"Location with ID {id} not found.");
+        }
+
         public static bool operator ==(Location location1, Location location2)
         {
             if (location1 is null && location2 is null)

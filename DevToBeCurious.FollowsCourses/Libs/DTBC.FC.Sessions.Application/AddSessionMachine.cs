@@ -33,6 +33,8 @@ namespace DTBC.FC.Sessions.Application
                 throw new TrainingCourseIdRequiredException("Training course ID must be greater than zero.");
             }
 
+            session.Status = SessionStatus.Draft;
+
             await addOneSession.AddOneAsync(session);
 
             return session;

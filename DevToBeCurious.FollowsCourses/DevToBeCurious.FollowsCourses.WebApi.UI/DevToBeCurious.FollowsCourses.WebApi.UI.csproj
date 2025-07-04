@@ -9,7 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1-Preview.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.3.efcore.9.0.0" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.0.30" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DTBC.FC.Sessions.Infrastructure\DTBC.FC.Sessions.Infrastructure.csproj" />
+    <ProjectReference Include="..\DTBC.FC.Sessions.Models\DTBC.FC.Sessions.Models.csproj" />
+    <ProjectReference Include="..\Libs\DTBC.FC.Sessions.Application\DTBC.FC.Sessions.Application.csproj" />
+    <ProjectReference Include="..\Libs\DTBC.FC.WebApi.Core\DTBC.FC.WebApi.Core.csproj" />
   </ItemGroup>
 
 </Project>

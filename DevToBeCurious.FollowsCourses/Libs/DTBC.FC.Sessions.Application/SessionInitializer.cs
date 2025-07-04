@@ -21,8 +21,6 @@ namespace DTBC.FC.Sessions.Application
         public static Session PrepareOne(int trainingCourseId)
         {
             var session = Session.Draft;
-
-            session.Status = SessionStatus.Draft;
             session.TrainingCourseId = trainingCourseId;
 
             return session;

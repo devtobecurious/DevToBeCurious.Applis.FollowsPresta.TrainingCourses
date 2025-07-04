@@ -32,6 +32,7 @@ namespace DTBC.FC.Sessions.Tests
 
             Assert.NotNull(session);
             Assert.Equal(1, session.Id);
+            Assert.Equal(SessionStatus.Draft, session.Status);
         }
 
         /// <summary>

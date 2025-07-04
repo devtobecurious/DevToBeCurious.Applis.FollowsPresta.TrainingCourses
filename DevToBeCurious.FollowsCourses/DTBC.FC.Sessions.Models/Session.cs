@@ -20,7 +20,9 @@ namespace DTBC.FC.Sessions.Models
         #region Properties
         public int Id { get; set; } = 0;
         public int CourseCenterId { get; set; } = 0;
+
         public DateTime StartDate { get; set; } = DateTime.Now;
+
         public DateTime EndDate { get; set; } = DateTime.Now;
         public SessionStatus Status { get; set; }
         public Location Location { get; set; }
