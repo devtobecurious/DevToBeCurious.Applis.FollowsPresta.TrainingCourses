@@ -13,10 +13,7 @@
     public class Location
     {
         #region Fields
-        private static readonly List<Location> _locationsList =
-        [
-            Online
-        ];
+        private static readonly List<Location> _locationsList = new();
         public static Location Online = new(1, "Distanciel");
         #endregion
 
@@ -25,6 +22,8 @@
         {
             Id = id;
             Label = label;
+
+            _locationsList.Add(this);
         }
         #endregion
 
