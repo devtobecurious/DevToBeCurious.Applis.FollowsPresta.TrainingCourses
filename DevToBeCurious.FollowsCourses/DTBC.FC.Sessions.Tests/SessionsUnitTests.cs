@@ -21,38 +21,20 @@ namespace DTBC.FC.Sessions.Tests
         [Fact]
         public async Task ShouldCreateACompleteSession()
         {
-            var session = SessionInitializer.PrepareOne(1);
-
-            //SQLitePCL.Batteries.Init();
-
-            DbContextOptionsBuilder<SessionsDbContext> optionsBuilder = new();
-            optionsBuilder.UseInMemoryDatabase("SessionsTestDb");
-            var context = new SessionsDbContext(optionsBuilder.Options);
-
-            IAddOneSessionRepository addOneSessionRepo = new DbContextAddOneSessionRepository(context);
-            AddSessionMachine addSessionMachine = new(addOneSessionRepo);
-            await addSessionMachine.AddOne(session);
-
-            Assert.NotNull(session);
-            Assert.Equal(1, session.Id);
+            await (new SessionController()).AddValidSession();
         }
 
+        /// <summary>
+        /// Tests whether an error is generated when the training course ID is empty or null.
+        /// </summary>
+        /// <remarks>This test verifies that the system correctly handles invalid input for the training
+        /// course ID by ensuring an appropriate error is generated. It is intended to validate input validation
+        /// logic.</remarks>
+        /// <returns></returns>
         [Fact]
         public async Task ShouldGenerateErrorWhenTrainingCourseIdEmptyOrNull()
         {
-            var session = SessionInitializer.PrepareOne(0);
-
-            DbContextOptionsBuilder<SessionsDbContext> optionsBuilder = new();
-            optionsBuilder.UseInMemoryDatabase("SessionsTestDb");
-            var context = new SessionsDbContext(optionsBuilder.Options);
-
-            IAddOneSessionRepository addOneSessionRepo = new DbContextAddOneSessionRepository(context);
-            AddSessionMachine addSessionMachine = new(addOneSessionRepo);
-
-            await Assert.ThrowsAsync<TrainingCourseIdRequiredException>(async () =>
-            {
-                await addSessionMachine.AddOne(session);
-            });
+            await (new SessionController()).AddNotValidSessionWithTrainingCourseEmpty();
         }
         #endregion
     }
