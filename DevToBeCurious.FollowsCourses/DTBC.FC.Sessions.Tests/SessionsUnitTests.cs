@@ -21,7 +21,7 @@ namespace DTBC.FC.Sessions.Tests
         [Fact]
         public async Task ShouldCreateACompleteSession()
         {
-            var session = SessionInitializer.PrepareOne();
+            var session = SessionInitializer.PrepareOne(1);
 
             //SQLitePCL.Batteries.Init();
 
@@ -40,7 +40,7 @@ namespace DTBC.FC.Sessions.Tests
         [Fact]
         public async Task ShouldGenerateErrorWhenTrainingCourseIdEmptyOrNull()
         {
-            var session = SessionInitializer.PrepareOne();
+            var session = SessionInitializer.PrepareOne(0);
 
             DbContextOptionsBuilder<SessionsDbContext> optionsBuilder = new();
             optionsBuilder.UseInMemoryDatabase("SessionsTestDb");

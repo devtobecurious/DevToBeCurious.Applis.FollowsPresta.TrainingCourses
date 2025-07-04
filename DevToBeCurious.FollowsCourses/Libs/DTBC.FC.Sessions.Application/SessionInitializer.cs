@@ -18,11 +18,12 @@ namespace DTBC.FC.Sessions.Application
         /// Prepares a session with default values for testing or initialization purposes.
         /// </summary>
         /// <returns></returns>
-        public static Session PrepareOne()
+        public static Session PrepareOne(int trainingCourseId)
         {
             var session = Session.Draft;
 
             session.Status = SessionStatus.Draft;
+            session.TrainingCourseId = trainingCourseId;
 
             return session;
         }
