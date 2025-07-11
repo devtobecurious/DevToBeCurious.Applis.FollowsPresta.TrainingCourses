@@ -36,6 +36,22 @@ namespace DTBC.FC.Sessions.Infrastructure
                 entity.Property(e => e.EndDate).IsRequired();
                 entity.ToTable("session");
             });
+
+            modelBuilder.Entity<Location>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Label).IsRequired();
+                entity.ToTable("location");
+            });
+
+            modelBuilder.Entity<SessionStatus>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Label).IsRequired();
+                entity.ToTable("sessionstatus");
+            });
         }
         #endregion
 

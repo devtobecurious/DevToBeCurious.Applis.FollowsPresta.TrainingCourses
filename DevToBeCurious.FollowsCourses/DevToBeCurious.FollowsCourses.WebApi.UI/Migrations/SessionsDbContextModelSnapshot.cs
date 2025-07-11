@@ -25,10 +25,7 @@ namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
             modelBuilder.Entity("DTBC.FC.Sessions.Models.Location", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Label")
                         .IsRequired()
@@ -36,7 +33,7 @@ namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Location");
+                    b.ToTable("location", (string)null);
                 });
 
             modelBuilder.Entity("DTBC.FC.Sessions.Models.Session", b =>
@@ -80,10 +77,7 @@ namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
             modelBuilder.Entity("DTBC.FC.Sessions.Models.SessionStatus", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Label")
                         .IsRequired()
@@ -91,7 +85,7 @@ namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SessionStatus");
+                    b.ToTable("sessionstatus", (string)null);
                 });
 
             modelBuilder.Entity("DTBC.FC.Sessions.Models.Session", b =>

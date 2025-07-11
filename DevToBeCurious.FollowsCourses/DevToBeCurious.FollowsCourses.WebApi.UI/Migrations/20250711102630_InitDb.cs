@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
 {
     /// <inheritdoc />
-    public partial class InitSessions : Migration
+    public partial class InitDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,32 +16,30 @@ namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Location",
+                name: "location",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Label = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Location", x => x.Id);
+                    table.PrimaryKey("PK_location", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "SessionStatus",
+                name: "sessionstatus",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Label = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SessionStatus", x => x.Id);
+                    table.PrimaryKey("PK_sessionstatus", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -63,15 +61,15 @@ namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
                 {
                     table.PrimaryKey("PK_session", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_session_Location_LocationId",
+                        name: "FK_session_location_LocationId",
                         column: x => x.LocationId,
-                        principalTable: "Location",
+                        principalTable: "location",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_session_SessionStatus_StatusId",
+                        name: "FK_session_sessionstatus_StatusId",
                         column: x => x.StatusId,
-                        principalTable: "SessionStatus",
+                        principalTable: "sessionstatus",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -95,10 +93,10 @@ namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
                 name: "session");
 
             migrationBuilder.DropTable(
-                name: "Location");
+                name: "location");
 
             migrationBuilder.DropTable(
-                name: "SessionStatus");
+                name: "sessionstatus");
         }
     }
 }

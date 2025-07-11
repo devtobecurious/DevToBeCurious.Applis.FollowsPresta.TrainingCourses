@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
 {
     [DbContext(typeof(SessionsDbContext))]
-    [Migration("20250704172409_InitSessions")]
-    partial class InitSessions
+    [Migration("20250711102630_InitDb")]
+    partial class InitDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,10 +28,7 @@ namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
             modelBuilder.Entity("DTBC.FC.Sessions.Models.Location", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Label")
                         .IsRequired()
@@ -39,7 +36,7 @@ namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Location");
+                    b.ToTable("location", (string)null);
                 });
 
             modelBuilder.Entity("DTBC.FC.Sessions.Models.Session", b =>
@@ -83,10 +80,7 @@ namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
             modelBuilder.Entity("DTBC.FC.Sessions.Models.SessionStatus", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Label")
                         .IsRequired()
@@ -94,7 +88,7 @@ namespace DevToBeCurious.FollowsCourses.WebApi.UI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SessionStatus");
+                    b.ToTable("sessionstatus", (string)null);
                 });
 
             modelBuilder.Entity("DTBC.FC.Sessions.Models.Session", b =>
