@@ -17,6 +17,9 @@ namespace DTBC.FC.Sessions.Infrastructure.Commands
         #region Public methods
         public Task AddOneAsync(Session session)
         {
+            context.Entry(session.Location).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+            context.Entry(session.Status).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+
             context.Sessions.Add(session);
             return context.SaveChangesAsync();
         }
