@@ -50,7 +50,6 @@ public static class SessionEndpoints
         {
             var session = await machine.AddOne(new Session()
             {
-                Id = model.Id,
                 CourseCenterId = model.CourseCenterId,
                 StartDate = model.StartDate,
                 EndDate = model.EndDate,
