@@ -13,7 +13,12 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve"
+    "module": "preserve",
+    "paths": {
+      "training-sessions": [
+        "./dist/training-sessions"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -29,6 +34,12 @@
     },
     {
       "path": "./projects/main-application/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/training-sessions/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/training-sessions/tsconfig.spec.json"
     }
   ]
 }

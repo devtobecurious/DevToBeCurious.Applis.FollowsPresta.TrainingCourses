@@ -22,6 +22,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/cyan-orange.css",
               "projects/main-application/src/styles.css"
             ],
             "server": "projects/main-application/src/main.server.ts",
@@ -80,8 +81,35 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/cyan-orange.css",
               "projects/main-application/src/styles.css"
             ]
+          }
+        }
+      }
+    },
+    "training-sessions": {
+      "projectType": "library",
+      "root": "projects/training-sessions",
+      "sourceRoot": "projects/training-sessions/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/training-sessions/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/training-sessions/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/training-sessions/tsconfig.spec.json"
           }
         }
       }
