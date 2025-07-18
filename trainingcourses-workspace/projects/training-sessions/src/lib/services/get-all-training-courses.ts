@@ -19,7 +19,7 @@ export class GetAllTrainingCourses {
     retry(1)
   )
 
-  getAll() {
+  getAll(): Observable<TrainingCourseList> {
     return this.list$
   }
 }
