@@ -1,17 +1,1 @@
-@let items = trainingCourses();
-@let loading = isLoading();
-
-<mat-form-field>
-  <mat-label>Formations</mat-label>
-  @if (loading) {
-    <mat-progress-spinner
-    class="example-margin"></mat-progress-spinner>
-  } @else {
-  <mat-select>
-    <mat-option value="">(Toutes)</mat-option>
-    @for (item of items; track item.id) {
-    <mat-option [value]="item.id">{{ item.name }}</mat-option>
-    }
-  </mat-select>
-  }
-</mat-form-field>
+<lfpa-select-training-courses [isLoading]="isTrainingCourseLoading()" [trainingCourses]="trainingCourses()" />

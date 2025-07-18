@@ -8,7 +8,7 @@
       "schematics": {},
       "root": "projects/main-application",
       "sourceRoot": "projects/main-application/src",
-      "prefix": "app",
+      "prefix": "fpa",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -92,7 +92,7 @@
       "projectType": "library",
       "root": "projects/training-sessions",
       "sourceRoot": "projects/training-sessions/src",
-      "prefix": "lib",
+      "prefix": "lfpa",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",

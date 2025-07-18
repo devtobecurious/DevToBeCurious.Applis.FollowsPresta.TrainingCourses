@@ -1,6 +1,6 @@
 import { inject, Injectable, resource, Signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { GetAllTrainingCourses } from './get-all-training-courses';
+import { GetAllRawTrainingCourses } from './get-all-raw-training-courses';
 import { TrainingCourseList } from '../models';
 
 
@@ -16,7 +16,7 @@ import { TrainingCourseList } from '../models';
   providedIn: 'root'
 })
 export class GetAllTrainingCoursesBusiness {
-  private readonly getAllTrainingCourses = inject(GetAllTrainingCourses)
+  private readonly getAllTrainingCourses = inject(GetAllRawTrainingCourses)
   private readonly trainingCourseResource = rxResource({
     defaultValue: [],
     stream: () => this.getAllTrainingCourses.getAll()
