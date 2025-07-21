@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "build:libs:sessions": "ng build training-sessions",
-    "build:libs": "npm run build:libs:sessions",
+    "build:libs:dtbc-core": "ng build dtbc-core",
+    "build:libs": "npm run build:libs:dtbc-core && npm run build:libs:sessions",
     "prestart": "npm run build:libs",
     "start": "ng serve",
     "prebuild": "npm run build:libs",

@@ -2,7 +2,7 @@ import { inject, Injectable, resource, Signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { GetAllRawTrainingCourses } from './get-all-raw-training-courses';
 import { TrainingCourseList } from '../models';
-
+import { GetAllBusiness } from 'dtbc-core';
 
 /**
  * @description Service to get all training courses
@@ -15,7 +15,7 @@ import { TrainingCourseList } from '../models';
 @Injectable({
   providedIn: 'root'
 })
-export class GetAllTrainingCoursesBusiness {
+export class GetAllTrainingCoursesBusiness implements GetAllBusiness<TrainingCourseList> {
   private readonly getAllTrainingCourses = inject(GetAllRawTrainingCourses)
   private readonly trainingCourseResource = rxResource({
     defaultValue: [],
