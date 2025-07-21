@@ -2,19 +2,24 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GetAllTrainingCoursesBusiness } from '../../services/get-all-training-courses-business';
 import { SelectTrainingCourses } from '../select-training-courses/select-training-courses';
+import { GetAllTrainingCentersBusiness } from '../../services/get-all-training-centers-business';
+import { SelectTrainingCenters } from '../select-training-centers/select-training-centers';
 
 @Component({
   selector: 'lfpa-add-new-session',
-  imports: [ReactiveFormsModule, SelectTrainingCourses],
+  imports: [ReactiveFormsModule, SelectTrainingCourses, SelectTrainingCenters],
   templateUrl: './add-new-session.html',
   styleUrl: './add-new-session.css'
 })
 export class AddNewSession {
-  private readonly getAllTrainingCoursesBusiness = inject(GetAllTrainingCoursesBusiness)
   private readonly formBuilder = inject(FormBuilder);
+  private readonly getAllTrainingCoursesBusiness = inject(GetAllTrainingCoursesBusiness)
 
   protected readonly trainingCourses = this.getAllTrainingCoursesBusiness.getAll()
   protected readonly isTrainingCourseLoading = this.getAllTrainingCoursesBusiness.isLoading()
+  private readonly getAllTrainingCentersBusiness = inject(GetAllTrainingCentersBusiness)
+  protected readonly trainingCenters = this.getAllTrainingCentersBusiness.getAll()
+  protected readonly isTrainingCenterLoading = this.getAllTrainingCentersBusiness.isLoading()
 
   protected readonly sessionForm = this.formBuilder.group({
     courseCenterId: [0, Validators.required],

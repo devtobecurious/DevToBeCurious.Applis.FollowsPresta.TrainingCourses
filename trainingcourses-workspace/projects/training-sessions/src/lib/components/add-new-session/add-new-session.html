@@ -1,1 +1,4 @@
-<lfpa-select-training-courses [isLoading]="isTrainingCourseLoading()" [trainingCourses]="trainingCourses()" />
+<div class="flex flex-col gap-4">
+  <lfpa-select-training-centers [isLoading]="isTrainingCenterLoading()" [trainingCenters]="trainingCenters()" />
+  <lfpa-select-training-courses [isLoading]="isTrainingCourseLoading()" [trainingCourses]="trainingCourses()" />
+</div>

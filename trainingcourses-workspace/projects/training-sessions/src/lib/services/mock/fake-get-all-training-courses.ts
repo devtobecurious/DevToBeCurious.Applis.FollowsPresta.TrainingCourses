@@ -1,6 +1,7 @@
 import { delay, Observable, of } from "rxjs";
-import { GetAllTrainingCourses } from "../custom-types";
+import { GetAllTrainingCenters, GetAllTrainingCourses } from "../custom-types";
 import { TrainingCourseList } from "../../models";
+import { TrainingCenterList } from "../../models/training-center";
 
 export class FakeGetAllTrainingCourses implements GetAllTrainingCourses {
   getAll(): Observable<TrainingCourseList> {
