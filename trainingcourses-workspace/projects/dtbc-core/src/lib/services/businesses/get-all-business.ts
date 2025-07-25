@@ -6,5 +6,5 @@ import { Signal } from "@angular/core"
  * @method getAll - Get all items
  */
 export interface GetAllBusiness<T extends object> {
-  getAll(): Signal<T>
+  getAll(): Signal<T | undefined>
 }

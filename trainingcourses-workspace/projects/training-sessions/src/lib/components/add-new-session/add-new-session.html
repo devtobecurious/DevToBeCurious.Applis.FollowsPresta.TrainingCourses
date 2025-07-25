@@ -1,4 +1,9 @@
+@let coursesItems = trainingCourses();
+
 <div class="flex flex-col gap-4">
   <lfpa-select-training-centers [isLoading]="isTrainingCenterLoading()" [trainingCenters]="trainingCenters()" />
-  <lfpa-select-training-courses [isLoading]="isTrainingCourseLoading()" [trainingCourses]="trainingCourses()" />
+
+  @if (coursesItems) {
+    <lfpa-select-training-courses [isLoading]="isTrainingCourseLoading()" [trainingCourses]="coursesItems" />
+  }
 </div>

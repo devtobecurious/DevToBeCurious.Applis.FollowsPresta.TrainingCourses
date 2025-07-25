@@ -1,37 +1,18 @@
-import { inject, Injectable, resource, Signal } from '@angular/core';
-import { rxResource } from '@angular/core/rxjs-interop';
-import { GetAllRawTrainingCourses } from './get-all-raw-training-courses';
+import { Injectable, InjectionToken } from '@angular/core';
+import { GetAllBusinessX, GetAllRaw } from 'dtbc-core';
 import { TrainingCourseList } from '../models';
-import { GetAllBusiness } from 'dtbc-core';
+
+export const GET_ALL_TRAINING_COURSES_RAW = new InjectionToken<GetAllRaw<TrainingCourseList>>('GET_ALL_TRAINING_COURSES_RAW')
 
 /**
  * @description Service to get all training courses
- * @property {GetAllTrainingCourses} getAllTrainingCourses - The service to get all training courses
- * @property {rxResource<TrainingCourseList>} trainingCourseResource - The resource to get all training courses
  * @method getAll - Get all training courses
  * @method isLoading - Check if the resource is loading
- * @method error - Get the error of the resource
+ * @method error - Get the error of the service
  */
-@Injectable({
-  providedIn: 'root'
-})
-export class GetAllTrainingCoursesBusiness implements GetAllBusiness<TrainingCourseList> {
-  private readonly getAllTrainingCourses = inject(GetAllRawTrainingCourses)
-  private readonly trainingCourseResource = rxResource({
-    defaultValue: [],
-    stream: () => this.getAllTrainingCourses.getAll()
-  })
-
-  getAll(): Signal<TrainingCourseList> {
-    return this.trainingCourseResource.value
+@Injectable()
+export class GetAllTrainingCoursesBusiness extends GetAllBusinessX<TrainingCourseList> {
+  constructor() {
+    super(GET_ALL_TRAINING_COURSES_RAW)
   }
-
-  isLoading(): Signal<boolean> {
-    return this.trainingCourseResource.isLoading
-  }
-
-  error(): Signal<Error | undefined> {
-    return this.trainingCourseResource.error
-  }
-
 }
