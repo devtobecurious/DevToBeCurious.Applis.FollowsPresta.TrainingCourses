@@ -23,11 +23,11 @@ export abstract class GetAllBusinessX<T extends object> implements GetAllBusines
     return this.itemsResource.value
   }
 
-  isLoading(): Signal<boolean> {
+  get isLoading(): Signal<boolean> {
     return this.itemsResource.isLoading
   }
 
-  error(): Signal<Error | undefined> {
+  get error(): Signal<Error | undefined> {
     return this.itemsResource.error
   }
 }
