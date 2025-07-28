@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "commit": "cz",
     "build:libs:sessions": "ng build training-sessions",
     "build:libs:dtbc-core": "ng build dtbc-core",
     "build:libs": "npm run build:libs:dtbc-core && npm run build:libs:sessions",
@@ -40,6 +39,7 @@
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
     "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
     "jasmine-core": "~5.7.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -48,5 +48,10 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^20.0.0",
     "typescript": "~5.8.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
