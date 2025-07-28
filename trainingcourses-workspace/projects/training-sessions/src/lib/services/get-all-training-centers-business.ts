@@ -1,8 +1,10 @@
-import { inject, Injectable, Signal } from '@angular/core';
+import { inject, Injectable, InjectionToken, Signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { GetAllBusiness } from 'dtbc-core';
+import { GetAllBusiness, GetAllBusinessX, GetAllRaw } from 'dtbc-core';
 import { TrainingCenterList } from '../models/training-center';
 import { GetAllRawTrainingCenters } from './get-all-raw-training-centers';
+
+export const GET_ALL_TRAINING_CENTERS_RAW = new InjectionToken<GetAllRaw<TrainingCenterList>>('GET_ALL_TRAINING_CENTERS_RAW')
 
 /**
  * @description Service to get all training courses
@@ -12,26 +14,9 @@ import { GetAllRawTrainingCenters } from './get-all-raw-training-centers';
  * @method isLoading - Check if the resource is loading
  * @method error - Get the error of the resource
  */
-@Injectable({
-  providedIn: 'root'
-})
-export class GetAllTrainingCentersBusiness implements GetAllBusiness<TrainingCenterList> {
-  private readonly getAllTrainingCenters = inject(GetAllRawTrainingCenters)
-  private readonly trainingCenterResource = rxResource({
-    defaultValue: [],
-    stream: () => this.getAllTrainingCenters.getAll()
-  })
-
-  getAll(): Signal<TrainingCenterList> {
-    return this.trainingCenterResource.value
+@Injectable()
+export class GetAllTrainingCentersBusiness extends GetAllBusinessX<TrainingCenterList> {
+  constructor() {
+    super(GET_ALL_TRAINING_CENTERS_RAW)
   }
-
-  isLoading(): Signal<boolean> {
-    return this.trainingCenterResource.isLoading
-  }
-
-  error(): Signal<Error | undefined> {
-    return this.trainingCenterResource.error
-  }
-
 }

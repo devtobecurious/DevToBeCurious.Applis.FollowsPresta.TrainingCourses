@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { TrainingCenterList } from '../models/training-center';
 import { Observable, shareReplay } from 'rxjs';
 import { retry } from 'rxjs';
+import { GetAllRawX } from 'dtbc-core';
 
 /**
  * @description Service to get all training courses
@@ -13,25 +14,7 @@ import { retry } from 'rxjs';
  * @method getAll - Get all training courses
  */
 @Injectable({
-  providedIn: 'root',
-  useFactory: () => {
-    let service: GetAllTrainingCenters
-    if (isDevMode()) {
-      service = new FakeGetAllTrainingCenters()
-    } else {
-      throw new Error('GetAllRawTrainingCenters is not available in production')
-    }
-    return service
-  }
+    providedIn: 'root'
 })
-export class GetAllRawTrainingCenters implements GetAllTrainingCenters {
-  private readonly http = inject(HttpClient)
-  private readonly list$ = this.http.get<TrainingCenterList>(`training-courses`).pipe(
-    shareReplay(1),
-    retry(1)
-  )
-
-  getAll(): Observable<TrainingCenterList> {
-    return this.list$
-  }
+export class GetAllRawTrainingCenters extends GetAllRawX<TrainingCenterList> {
 }
