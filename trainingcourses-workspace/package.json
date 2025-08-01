@@ -7,7 +7,7 @@
     "build:libs:dtbc-core": "ng build dtbc-core",
     "build:libs": "npm run build:libs:dtbc-core && npm run build:libs:sessions",
     "prestart": "npm run build:libs",
-    "start": "ng serve",
+    "start": "ng serve --port=4201",
     "prebuild": "npm run build:libs",
     "build": "ng build main-application",
     "watch": "ng build main-application --watch --configuration development",

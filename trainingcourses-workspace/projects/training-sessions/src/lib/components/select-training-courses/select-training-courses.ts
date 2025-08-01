@@ -1,13 +1,12 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, forwardRef, inject, signal } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { GET_ALL_URL } from 'dtbc-core';
-import { TrainingCourseList } from '../../models';
-import { GET_ALL_TRAINING_COURSES_RAW, GetAllTrainingCoursesBusiness } from '../../services/get-all-training-courses-business';
 import { getAllRawTrainingCoursesFactory } from '../../services/factories/training-courses-services.factories';
-import { FormGroup } from '@angular/forms';
+import { GET_ALL_TRAINING_COURSES_RAW, GetAllTrainingCoursesBusiness } from '../../services/get-all-training-courses-business';
 
 @Component({
   selector: 'lfpa-select-training-courses',
@@ -18,10 +17,37 @@ import { FormGroup } from '@angular/forms';
     GetAllTrainingCoursesBusiness,
     { provide: GET_ALL_URL, useValue: 'training-courses' },
     { provide: GET_ALL_TRAINING_COURSES_RAW, useFactory: getAllRawTrainingCoursesFactory },
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SelectTrainingCourses),
+      multi: true
+    }
   ]
 })
-export class SelectTrainingCourses {
+export class SelectTrainingCourses implements ControlValueAccessor {
   private readonly getAllTrainingCoursesBusiness = inject(GetAllTrainingCoursesBusiness)
   protected readonly trainingCourses = this.getAllTrainingCoursesBusiness.getAll()
   protected readonly isLoading = this.getAllTrainingCoursesBusiness.isLoading
+
+  trainingCourseId = signal<number>(0)
+  private onChange = (id: number) => {}
+  private onTouched = () => {}
+
+  selectId(id: number) {
+    this.onChange(id)
+    this.writeValue(id)
+  }
+
+  writeValue(id: number): void {
+    this.trainingCourseId.set(id)
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn
+  }
+  setDisabledState?(isDisabled: boolean): void {
+
+  }
 }
