@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SelectTrainingCenters } from '../select-training-centers/select-training-centers';
 import { SelectTrainingCourses } from '../select-training-courses/select-training-courses';
+import { DatePickerWithLabel } from '../date-picker-with-label/date-picker-with-label';
 
 
 @Component({
   selector: 'lfpa-add-new-session',
-  imports: [ReactiveFormsModule, SelectTrainingCourses, SelectTrainingCenters],
+  imports: [ReactiveFormsModule, SelectTrainingCourses, SelectTrainingCenters, DatePickerWithLabel],
   templateUrl: './add-new-session.html',
   styleUrl: './add-new-session.css'
 })
