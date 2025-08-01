@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SelectTrainingCenters } from '../select-training-centers/select-training-centers';
 import { SelectTrainingCourses } from '../select-training-courses/select-training-courses';
 
+
 @Component({
   selector: 'lfpa-add-new-session',
   imports: [ReactiveFormsModule, SelectTrainingCourses, SelectTrainingCenters],
