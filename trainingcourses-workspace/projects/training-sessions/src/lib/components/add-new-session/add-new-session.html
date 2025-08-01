@@ -1,6 +1,6 @@
 <form [formGroup]="sessionForm" (ngSubmit)="onSubmit()">
   <div class="flex flex-col gap-4">
-    <lfpa-select-training-centers />
+    <lfpa-select-training-centers formControlName="courseCenterId" />
     <lfpa-select-training-courses formControlName="trainingCourseId" />
 
     <button type="submit">Ajouter</button>
