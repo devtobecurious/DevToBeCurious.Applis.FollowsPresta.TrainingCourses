@@ -12,12 +12,14 @@ import { SelectTrainingCourses } from '../select-training-courses/select-trainin
 export class AddNewSession {
   private readonly formBuilder = inject(FormBuilder);
 
-  protected readonly sessionForm = this.formBuilder.group({
+  protected readonly sessionForm = this.formBuilder.nonNullable.group({
     courseCenterId: [0, Validators.required],
     startDate: [new Date(), Validators.required],
     endDate: [new Date(), Validators.required],
     trainingCourseId: [0, Validators.required],
   });
 
-
+  onSubmit() {
+    console.log(this.sessionForm.value);
+  }
 }

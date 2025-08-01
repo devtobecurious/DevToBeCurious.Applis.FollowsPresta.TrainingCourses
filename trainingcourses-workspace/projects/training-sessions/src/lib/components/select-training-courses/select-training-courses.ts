@@ -7,6 +7,7 @@ import { GET_ALL_URL } from 'dtbc-core';
 import { TrainingCourseList } from '../../models';
 import { GET_ALL_TRAINING_COURSES_RAW, GetAllTrainingCoursesBusiness } from '../../services/get-all-training-courses-business';
 import { getAllRawTrainingCoursesFactory } from '../../services/factories/training-courses-services.factories';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'lfpa-select-training-courses',

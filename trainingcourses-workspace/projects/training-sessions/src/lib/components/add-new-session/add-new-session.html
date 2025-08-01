@@ -1,4 +1,8 @@
-<div class="flex flex-col gap-4">
-  <lfpa-select-training-centers />
-  <lfpa-select-training-courses />
-</div>
+<form [formGroup]="sessionForm" (ngSubmit)="onSubmit()">
+  <div class="flex flex-col gap-4">
+    <lfpa-select-training-centers />
+    <lfpa-select-training-courses />
+
+    <button type="submit">Ajouter</button>
+  </div>
+</form>

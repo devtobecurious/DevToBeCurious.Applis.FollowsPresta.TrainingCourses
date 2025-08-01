@@ -6,10 +6,10 @@
 } @else {
   <mat-form-field>
     <mat-label>Centre de formation</mat-label>
-      <mat-select>
+      <mat-select formControlName="courseCenterId">
         <mat-option value="">(Toutes)</mat-option>
         @for (item of items; track item.id) {
-        <mat-option [value]="item.id">{{ item.name }}</mat-option>
+          <mat-option [value]="item.id">{{ item.name }}</mat-option>
         }
     </mat-select>
   </mat-form-field>
