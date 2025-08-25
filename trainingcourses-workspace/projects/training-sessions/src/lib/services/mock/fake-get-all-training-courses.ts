@@ -9,12 +9,16 @@ export class FakeGetAllTrainingCourses implements GetAllTrainingCourses {
       {
         id: 1,
         name: 'Training Course 1',
-        description: 'Description 1'
+        description: 'Description 1',
+        defaultNbDays: 3,
+        centerId: 1
       },
       {
         id: 2,
         name: 'Training Course 2',
-        description: 'Description 2'
+        description: 'Description 2',
+        defaultNbDays: 3,
+        centerId: 2
       }
     ]
 

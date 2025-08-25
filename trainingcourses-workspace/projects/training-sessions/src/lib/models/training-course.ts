@@ -8,6 +8,8 @@ export interface TrainingCourse {
   id: number
   name: string
   description: string
+  defaultNbDays: number,
+  centerId: number
 }
 
 /**

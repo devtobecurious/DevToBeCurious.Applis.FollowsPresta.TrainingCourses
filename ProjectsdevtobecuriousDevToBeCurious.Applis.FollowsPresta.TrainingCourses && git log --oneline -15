@@ -1,0 +1,10 @@
+[33m5311c8a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32m1-add-a-new-session-from-a-courses-center[m[33m, [m[1;31morigin/1-add-a-new-session-from-a-courses-center[m[33m)[m refacto: use custom cva control for all dates
+[33mf9b811d[m feat: add begin date control
+[33m6c4be0f[m feat: use CVA to course center id
+[33m81860fc[m feat: use CVA to training course select component
+[33m9b4b0bd[m feat: prepare to formGroup and formControl
+[33m6812f29[m refacto: put business rules inside child components
+[33ma569faa[m chore(prepare to use commitizen): commitizen install
+[33mf035ff7[m chore: prepare to conventional commit
+[33mf3456d9[m refacto: use new centers business
+[33m4e13320[m refacto: training centers raw and business service
