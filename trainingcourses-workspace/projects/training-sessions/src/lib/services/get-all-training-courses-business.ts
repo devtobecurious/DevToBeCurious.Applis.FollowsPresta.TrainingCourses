@@ -1,6 +1,8 @@
-import { Injectable, InjectionToken } from '@angular/core';
+import { inject, Injectable, InjectionToken } from '@angular/core';
 import { GetAllBusinessX, GetAllRaw } from 'dtbc-core';
 import { TrainingCourseList } from '../models';
+import { map, Observable, switchMap } from 'rxjs';
+import { TrainingCenterStore } from './store/training-center-store';
 
 export const GET_ALL_TRAINING_COURSES_RAW = new InjectionToken<GetAllRaw<TrainingCourseList>>('GET_ALL_TRAINING_COURSES_RAW')
 
@@ -12,7 +14,18 @@ export const GET_ALL_TRAINING_COURSES_RAW = new InjectionToken<GetAllRaw<Trainin
  */
 @Injectable()
 export class GetAllTrainingCoursesBusiness extends GetAllBusinessX<TrainingCourseList> {
+  private readonly trainingCenterStore = inject(TrainingCenterStore)
+
   constructor() {
     super(GET_ALL_TRAINING_COURSES_RAW)
+  }
+
+  protected override getAllRawData(): Observable<TrainingCourseList> {
+    const baseData$ = super.getAllRawData()
+    return this.trainingCenterStore.trainingCenterId.pipe(
+      switchMap((id) => baseData$.pipe(
+        map((courses) => courses.filter((course) => course.centerId === id))
+      ))
+    )
   }
 }

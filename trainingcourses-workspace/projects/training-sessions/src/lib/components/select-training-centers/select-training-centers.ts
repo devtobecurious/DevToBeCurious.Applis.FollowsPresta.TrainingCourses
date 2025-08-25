@@ -7,6 +7,7 @@ import { GET_ALL_URL } from 'dtbc-core';
 import { getAllRawTrainingCentersFactory } from '../../services/factories/training-centers-services.factories';
 import { GET_ALL_TRAINING_CENTERS_RAW, GetAllTrainingCentersBusiness } from '../../services/get-all-training-centers-business';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { TrainingCenterStore } from '../../services/store/training-center-store';
 
 @Component({
   selector: 'lfpa-select-training-centers',
@@ -26,6 +27,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class SelectTrainingCenters implements ControlValueAccessor {
   private readonly getAllTrainingCentersBusiness = inject(GetAllTrainingCentersBusiness)
+  private readonly trainingCenterStore = inject(TrainingCenterStore)
   protected readonly trainingCenters = this.getAllTrainingCentersBusiness.getAll()
   protected readonly isLoading = this.getAllTrainingCentersBusiness.isLoading
 
@@ -34,6 +36,7 @@ export class SelectTrainingCenters implements ControlValueAccessor {
   private onTouched = () => {}
 
   selectId(id: number) {
+    this.trainingCenterStore.dispatch(id)
     this.onChange(id)
     this.writeValue(id)
   }

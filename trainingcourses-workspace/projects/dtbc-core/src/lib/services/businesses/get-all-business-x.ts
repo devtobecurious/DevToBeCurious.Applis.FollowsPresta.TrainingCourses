@@ -2,6 +2,7 @@ import { inject, InjectionToken, Signal } from "@angular/core"
 import { GetAllBusiness } from "./get-all-business"
 import { GetAllRaw } from "../raw/get-all-raw"
 import { rxResource } from '@angular/core/rxjs-interop';
+import { Observable } from "rxjs";
 
 /**
  * @description Abstract class to get all items from a business part
@@ -12,7 +13,7 @@ export abstract class GetAllBusinessX<T extends object> implements GetAllBusines
   private readonly getAllRawService: GetAllRaw<T>
 
   private readonly itemsResource = rxResource({
-    stream: () => this.getAllRawService.getAll()
+    stream: () => this.getAllRawData()
   })
 
   constructor(token: InjectionToken<GetAllRaw<T>>) {
@@ -21,6 +22,15 @@ export abstract class GetAllBusinessX<T extends object> implements GetAllBusines
 
   getAll(): Signal<T | undefined> {
     return this.itemsResource.value
+  }
+
+  /**
+   * @description Get all raw data, from raw service
+   * @returns {Observable<T>} - The observable of the items
+   * @protected could be overridden to add custom logic
+   */
+  protected getAllRawData(): Observable<T> {
+    return this.getAllRawService.getAll()
   }
 
   get isLoading(): Signal<boolean> {
