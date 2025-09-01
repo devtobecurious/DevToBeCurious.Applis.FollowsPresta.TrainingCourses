@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+/**
+ * @description Store the training center id
+ */
 @Injectable({
   providedIn: 'root'
 })
-export class TrainingCenterStore {
+export class TrainingCenterIdStore {
   private readonly trainingCenterSelected = new BehaviorSubject<number>(0)
 
   /**

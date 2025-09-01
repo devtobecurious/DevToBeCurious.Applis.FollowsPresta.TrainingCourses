@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { GET_ALL_URL } from 'dtbc-core';
 import { getAllRawTrainingCoursesFactory } from '../../services/factories/training-courses-services.factories';
 import { GET_ALL_TRAINING_COURSES_RAW, GetAllTrainingCoursesBusiness } from '../../services/get-all-training-courses-business';
+import { TrainingCourseStore } from '../../services/store/training-course-store';
 
 @Component({
   selector: 'lfpa-select-training-courses',
@@ -28,12 +29,22 @@ export class SelectTrainingCourses implements ControlValueAccessor {
   private readonly getAllTrainingCoursesBusiness = inject(GetAllTrainingCoursesBusiness)
   protected readonly trainingCourses = this.getAllTrainingCoursesBusiness.getAll()
   protected readonly isLoading = this.getAllTrainingCoursesBusiness.isLoading
+  private readonly trainingCourseStore = inject(TrainingCourseStore)
 
   trainingCourseId = signal<number>(0)
   private onChange = (id: number) => {}
   private onTouched = () => {}
 
   selectId(id: number) {
+    const courses = this.trainingCourses()
+
+    if(courses) {
+      const course = courses.find((course) => course.id === id)
+      if(course) {
+        this.trainingCourseStore.dispatch(course)
+      }
+    }
+
     this.onChange(id)
     this.writeValue(id)
   }

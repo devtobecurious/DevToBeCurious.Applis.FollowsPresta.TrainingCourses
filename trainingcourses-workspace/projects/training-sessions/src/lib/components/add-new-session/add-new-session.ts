@@ -9,7 +9,7 @@ import { DatePickerWithLabel } from '../date-picker-with-label/date-picker-with-
   selector: 'lfpa-add-new-session',
   imports: [ReactiveFormsModule, SelectTrainingCourses, SelectTrainingCenters, DatePickerWithLabel],
   templateUrl: './add-new-session.html',
-  styleUrl: './add-new-session.css'
+  styleUrl: './add-new-session.css',
 })
 export class AddNewSession {
   private readonly formBuilder = inject(FormBuilder);
