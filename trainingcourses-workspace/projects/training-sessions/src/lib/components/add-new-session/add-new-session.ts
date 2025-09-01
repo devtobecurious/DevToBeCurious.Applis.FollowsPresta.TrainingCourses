@@ -18,6 +18,7 @@ export class AddNewSession {
     courseCenterId: [0, Validators.required],
     startDate: [new Date(), Validators.required],
     endDate: [new Date(), Validators.required],
+    nbDays: [0, Validators.required],
     trainingCourseId: [0, Validators.required],
   });
 
