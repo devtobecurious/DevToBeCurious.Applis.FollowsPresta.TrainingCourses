@@ -10,7 +10,7 @@ export class FakeGetAllTrainingCourses implements GetAllTrainingCourses {
         id: 1,
         name: 'Training Course 1',
         description: 'Description 1',
-        defaultNbDays: 3,
+        defaultNbDays: 2,
         centerId: 1
       },
       {
@@ -24,14 +24,14 @@ export class FakeGetAllTrainingCourses implements GetAllTrainingCourses {
         id: 2,
         name: 'Training Course 2',
         description: 'Description 2',
-        defaultNbDays: 3,
+        defaultNbDays: 4,
         centerId: 2
       },
       {
         id: 21,
         name: 'Training Course 21',
         description: 'Description 21',
-        defaultNbDays: 3,
+        defaultNbDays: 5,
         centerId: 2
       }
     ]
