@@ -1,23 +1,21 @@
 import { Component, inject, OnInit } from '@angular/core';
+import {MatButtonModule} from '@angular/material/button';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TrainingCourseStore } from '../../services/store/training-course-store';
+import { DatePickerWithLabel } from '../date-picker-with-label/date-picker-with-label';
 import { SelectTrainingCenters } from '../select-training-centers/select-training-centers';
 import { SelectTrainingCourses } from '../select-training-courses/select-training-courses';
-import { DatePickerWithLabel } from '../date-picker-with-label/date-picker-with-label';
-import { TrainingCourseStore } from '../../services/store/training-course-store';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { JsonPipe } from '@angular/common';
 
 
 @Component({
   selector: 'lfpa-add-new-session',
-  imports: [ReactiveFormsModule, SelectTrainingCourses, SelectTrainingCenters, DatePickerWithLabel, JsonPipe],
+  imports: [ReactiveFormsModule, SelectTrainingCourses, SelectTrainingCenters, DatePickerWithLabel, MatButtonModule],
   templateUrl: './add-new-session.html',
   styleUrl: './add-new-session.css',
 })
 export class AddNewSession implements OnInit {
   private readonly formBuilder = inject(FormBuilder);
   private readonly trainingCourseStore = inject(TrainingCourseStore);
-  //protected readonly trainingCourse = toSignal(this.trainingCourseStore.trainingCourse);
 
   ngOnInit(): void {
     this.trainingCourseStore.trainingCourse

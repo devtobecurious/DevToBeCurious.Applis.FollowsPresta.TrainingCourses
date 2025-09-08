@@ -1,14 +1,34 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Nouvelle session de formation</h1>
+  </div>
+</div>
 
 <form [formGroup]="sessionForm" (ngSubmit)="onSubmit()">
-  <div class="flex flex-col gap-4">
-    <lfpa-select-training-centers formControlName="courseCenterId" />
-    <lfpa-select-training-courses formControlName="trainingCourseId" />
-
+  <div class="row">
+    <div class="col-md-3">
+      <lfpa-select-training-centers formControlName="courseCenterId" />
+    </div>
+    <div class="col-md-3">
+      <lfpa-select-training-courses formControlName="trainingCourseId" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
     <lfpa-date-picker-with-label label="Date de début" formControlName="startDate" />
+  </div>
+  <div class="col-md-3">
     <lfpa-date-picker-with-label label="Date de fin" formControlName="endDate" />
-
-    <input type="number" formControlName="nbDays" />
-
-    <button type="submit">Ajouter</button>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <input type="number" formControlName="nbDays" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <button type="submit" mat-button>Ajouter</button>
+    </div>
   </div>
 </form>
