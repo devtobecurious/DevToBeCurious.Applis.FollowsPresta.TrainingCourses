@@ -5,7 +5,7 @@ import { TrainingCourseStore } from '../../services/store/training-course-store'
 import { DatePickerWithLabel } from '../date-picker-with-label/date-picker-with-label';
 import { SelectTrainingCenters } from '../select-training-centers/select-training-centers';
 import { SelectTrainingCourses } from '../select-training-courses/select-training-courses';
-
+import { AddNewTrainingSessionBusiness } from '../../services/commands/add-new-training-session-business';
 
 @Component({
   selector: 'lfpa-add-new-session',
@@ -16,6 +16,7 @@ import { SelectTrainingCourses } from '../select-training-courses/select-trainin
 export class AddNewSession implements OnInit {
   private readonly formBuilder = inject(FormBuilder);
   private readonly trainingCourseStore = inject(TrainingCourseStore);
+  private readonly addNewTrainingSessionBusiness = inject(AddNewTrainingSessionBusiness);
 
   ngOnInit(): void {
     this.trainingCourseStore.trainingCourse
@@ -37,6 +38,14 @@ export class AddNewSession implements OnInit {
   });
 
   onSubmit() {
-    console.log(this.sessionForm.value);
+    const session = this.sessionForm.getRawValue();
+
+    if (session && this.sessionForm.valid) {
+      this.addNewTrainingSessionBusiness.addOne(session).subscribe({
+        next: (session) => {
+          console.log(session);
+        }
+      });
+    }
   }
 }
