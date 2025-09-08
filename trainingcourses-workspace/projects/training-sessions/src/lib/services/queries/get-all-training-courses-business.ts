@@ -1,8 +1,8 @@
 import { inject, Injectable, InjectionToken } from '@angular/core';
 import { GetAllBusinessX, GetAllRaw } from 'dtbc-core';
-import { TrainingCourseList } from '../models';
+import { TrainingCourseList } from '../../models';
 import { map, Observable, switchMap } from 'rxjs';
-import { TrainingCenterIdStore } from './store/training-center-id-store';
+import { TrainingCenterIdStore } from '../../services/store/training-center-id-store';
 
 export const GET_ALL_TRAINING_COURSES_RAW = new InjectionToken<GetAllRaw<TrainingCourseList>>('GET_ALL_TRAINING_COURSES_RAW')
 

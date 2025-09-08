@@ -1,8 +1,8 @@
 import { inject, Injectable, isDevMode } from '@angular/core';
-import { GetAllTrainingCenters } from './custom-types';
-import { FakeGetAllTrainingCenters } from './mock/fake-get-all-training-centers';
+import { GetAllTrainingCenters } from '../custom-types';
+import { FakeGetAllTrainingCenters } from '../mock/fake-get-all-training-centers';
 import { HttpClient } from '@angular/common/http';
-import { TrainingCenterList } from '../models/training-center';
+import { TrainingCenterList } from '../../models/training-center';
 import { Observable, shareReplay } from 'rxjs';
 import { retry } from 'rxjs';
 import { GetAllRawX } from 'dtbc-core';

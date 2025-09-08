@@ -1,7 +1,7 @@
 import { inject, Injectable, InjectionToken, Signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { GetAllBusiness, GetAllBusinessX, GetAllRaw } from 'dtbc-core';
-import { TrainingCenterList } from '../models/training-center';
+import { TrainingCenterList } from '../../models/training-center';
 import { GetAllRawTrainingCenters } from './get-all-raw-training-centers';
 
 export const GET_ALL_TRAINING_CENTERS_RAW = new InjectionToken<GetAllRaw<TrainingCenterList>>('GET_ALL_TRAINING_CENTERS_RAW')

@@ -6,7 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { GET_ALL_URL } from 'dtbc-core';
 import { getAllRawTrainingCoursesFactory } from '../../services/factories/training-courses-services.factories';
-import { GET_ALL_TRAINING_COURSES_RAW, GetAllTrainingCoursesBusiness } from '../../services/get-all-training-courses-business';
+import { GET_ALL_TRAINING_COURSES_RAW, GetAllTrainingCoursesBusiness } from '../../services/queries/get-all-training-courses-business';
 import { TrainingCourseStore } from '../../services/store/training-course-store';
 
 @Component({
