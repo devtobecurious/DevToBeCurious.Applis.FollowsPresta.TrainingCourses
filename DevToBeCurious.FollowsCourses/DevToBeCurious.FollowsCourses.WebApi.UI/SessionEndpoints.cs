@@ -23,7 +23,7 @@ public static class SessionEndpoints
     /// <param name="routes">The <see cref="IEndpointRouteBuilder"/> used to define the routes.</param>
     public static void MapSessionEndpoints(this IEndpointRouteBuilder routes)
     {
-        var group = routes.MapGroup("/api/Session").WithTags(nameof(Session));
+        var group = routes.MapGroup("/api/sessions").WithTags(nameof(Session));
 
         group.MapGet("/", () =>
         {
@@ -58,7 +58,7 @@ public static class SessionEndpoints
                 NbDays = model.NbDays
             });
 
-            return TypedResults.Created($"/api/Sessions/{session.Id}", session);
+            return TypedResults.Created($"/api/sessions/{session.Id}", session);
         })
         .WithName("CreateSession")
         .WithOpenApi();
