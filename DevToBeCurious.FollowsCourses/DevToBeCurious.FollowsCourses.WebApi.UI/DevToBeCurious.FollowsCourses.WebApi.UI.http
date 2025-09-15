@@ -1,6 +1,9 @@
-@DevToBeCurious.FollowsCourses.WebApi.UI_HostAddress = http://localhost:5109
+﻿@DevToBeCurious.FollowsCourses.WebApi.UI_HostAddress = https://localhost:7123
 
-GET {{DevToBeCurious.FollowsCourses.WebApi.UI_HostAddress}}/weatherforecast/
-Accept: application/json
+GET {{DevToBeCurious.FollowsCourses.WebApi.UI_HostAddress}}/api/Session
+
+###
+
+POST {{DevToBeCurious.FollowsCourses.WebApi.UI_HostAddress}}/api/Session
 
 ###

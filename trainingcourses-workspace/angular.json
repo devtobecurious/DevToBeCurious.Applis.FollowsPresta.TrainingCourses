@@ -8,7 +8,7 @@
       "schematics": {},
       "root": "projects/main-application",
       "sourceRoot": "projects/main-application/src",
-      "prefix": "app",
+      "prefix": "fpa",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -22,13 +22,18 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "@angular/material/prebuilt-themes/cyan-orange.css",
               "projects/main-application/src/styles.css"
             ],
             "server": "projects/main-application/src/main.server.ts",
             "outputMode": "server",
             "ssr": {
               "entry": "projects/main-application/src/server.ts"
-            }
+            },
+            "polyfills": [
+              "@angular/localize/init"
+            ]
           },
           "configurations": {
             "production": {
@@ -56,6 +61,9 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "proxyConfig": "projects/main-application/src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "main-application:build:production"
@@ -80,8 +88,64 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/cyan-orange.css",
               "projects/main-application/src/styles.css"
+            ],
+            "polyfills": [
+              "@angular/localize/init"
             ]
+          }
+        }
+      }
+    },
+    "training-sessions": {
+      "projectType": "library",
+      "root": "projects/training-sessions",
+      "sourceRoot": "projects/training-sessions/src",
+      "prefix": "lfpa",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/training-sessions/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/training-sessions/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/training-sessions/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "dtbc-core": {
+      "projectType": "library",
+      "root": "projects/dtbc-core",
+      "sourceRoot": "projects/dtbc-core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dtbc-core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dtbc-core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/dtbc-core/tsconfig.spec.json"
           }
         }
       }

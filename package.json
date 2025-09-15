@@ -1,0 +1,21 @@
+{
+  "name": "devtobecurious.applis.followspresta.trainingcourses",
+  "version": "1.0.0",
+  "description": "Saas to manage training courses sessions from other training centers",
+  "main": "index.js",
+  "scripts": {
+    "cz": "cz",
+    "commit": "git add --all && npm run cz"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

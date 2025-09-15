@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Nouvelle session de formation</h1>
+  </div>
+</div>
+
+<form [formGroup]="sessionForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-md-3">
+      <lfpa-select-training-centers formControlName="courseCenterId" />
+    </div>
+    <div class="col-md-3">
+      <lfpa-select-training-courses formControlName="trainingCourseId" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+    <lfpa-date-picker-with-label label="Date de début" formControlName="startDate" />
+  </div>
+  <div class="col-md-3">
+    <lfpa-date-picker-with-label label="Date de fin" formControlName="endDate" />
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <mat-form-field>
+        <mat-label>Nombre de jours</mat-label>
+        <input matInput formControlName="nbDays">
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <mat-form-field>
+        <mat-label>Localisation</mat-label>
+        <mat-select formControlName="locationId">
+          <mat-option value="">(Toutes)</mat-option>
+          <mat-option value="1">En ligne</mat-option>
+          <mat-option value="2">En présentiel</mat-option>
+          <mat-option value="3">Hybride</mat-option>
+      </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <button type="submit" [disabled]="sessionForm.invalid" mat-button>Ajouter</button>
+    </div>
+  </div>
+</form>

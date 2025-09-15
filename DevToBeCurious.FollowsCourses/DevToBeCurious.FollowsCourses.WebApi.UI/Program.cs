@@ -1,34 +1,41 @@
+using DevToBeCurious.FollowsCourses.WebApi.UI;
+using DevToBeCurious.FollowsCourses.WebApi.UI.Extensions;
+
+using DTBC.FC.Sessions.Application;
+using DTBC.FC.Sessions.Application.Commands;
+using DTBC.FC.Sessions.Infrastructure;
+using DTBC.FC.Sessions.Infrastructure.Commands;
+
+using Microsoft.EntityFrameworkCore;
+
+using Scalar.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddCustomCors(builder.Configuration);
+builder.Services.AddScoped<IAddOneSessionRepository, DbContextAddOneSessionRepository>();
+builder.Services.AddScoped<AddSessionMachine>();
+builder.Services.AddDbContext<SessionsDbContext>(options =>
+{
+    var executeAssemblyName = System.Reflection.Assembly.GetAssembly(typeof(Program))!.GetName().Name;
+    var connectionString = builder.Configuration.GetConnectionString("SessionConnection");
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), b => b.MigrationsAssembly(executeAssemblyName));
+});
+
+builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
+app.MapOpenApi();
+app.MapScalarApiReference(options => options
+    .WithTitle("Demo API")
+    .WithTheme(ScalarTheme.Saturn)
+    .WithDarkMode(true));
 
 app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-});
+app.UseCustomCors();
+app.MapSessionEndpoints();
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
