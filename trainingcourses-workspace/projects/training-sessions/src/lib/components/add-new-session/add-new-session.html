@@ -31,7 +31,7 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-      <button type="submit" mat-button>Ajouter</button>
+      <button type="submit" [disabled]="sessionForm.invalid" mat-button>Ajouter</button>
     </div>
   </div>
 </form>
