@@ -28,6 +28,17 @@
         <input matInput formControlName="nbDays">
       </mat-form-field>
     </div>
+    <div class="col-md-3">
+      <mat-form-field>
+        <mat-label>Localisation</mat-label>
+        <mat-select formControlName="locationId">
+          <mat-option value="">(Toutes)</mat-option>
+          <mat-option value="1">En ligne</mat-option>
+          <mat-option value="2">En présentiel</mat-option>
+          <mat-option value="3">Hybride</mat-option>
+      </mat-select>
+      </mat-form-field>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-3">

@@ -7,10 +7,11 @@ import { SelectTrainingCenters } from '../select-training-centers/select-trainin
 import { SelectTrainingCourses } from '../select-training-courses/select-training-courses';
 import { AddNewTrainingSessionBusiness } from '../../services/commands/add-new-training-session-business';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'lfpa-add-new-session',
-  imports: [ReactiveFormsModule, SelectTrainingCourses, SelectTrainingCenters, DatePickerWithLabel, MatButtonModule, MatInputModule],
+  imports: [ReactiveFormsModule, SelectTrainingCourses, SelectTrainingCenters, MatSelectModule, DatePickerWithLabel, MatButtonModule, MatInputModule],
   templateUrl: './add-new-session.html',
   styleUrl: './add-new-session.css',
 })
@@ -34,6 +35,7 @@ export class AddNewSession implements OnInit {
     startDate: [new Date(), Validators.required],
     endDate: [new Date(), Validators.required],
     nbDays: [0, Validators.required],
+    locationId: [0, Validators.required],
     trainingCourseId: [0, Validators.required],
   });
 
