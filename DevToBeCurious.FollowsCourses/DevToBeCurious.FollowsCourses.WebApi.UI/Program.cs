@@ -1,4 +1,5 @@
 using DevToBeCurious.FollowsCourses.WebApi.UI;
+using DevToBeCurious.FollowsCourses.WebApi.UI.Extensions;
 
 using DTBC.FC.Sessions.Application;
 using DTBC.FC.Sessions.Application.Commands;
@@ -8,8 +9,10 @@ using DTBC.FC.Sessions.Infrastructure.Commands;
 using Microsoft.EntityFrameworkCore;
 
 using Scalar.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCustomCors(builder.Configuration);
 builder.Services.AddScoped<IAddOneSessionRepository, DbContextAddOneSessionRepository>();
 builder.Services.AddScoped<AddSessionMachine>();
 builder.Services.AddDbContext<SessionsDbContext>(options =>
@@ -22,10 +25,8 @@ builder.Services.AddDbContext<SessionsDbContext>(options =>
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 
-
-
-
 var app = builder.Build();
+
 
 app.MapOpenApi();
 app.MapScalarApiReference(options => options
@@ -34,7 +35,7 @@ app.MapScalarApiReference(options => options
     .WithDarkMode(true));
 
 app.UseHttpsRedirection();
-
+app.UseCustomCors();
 app.MapSessionEndpoints();
 
 app.Run();
