@@ -6,10 +6,11 @@ import { DatePickerWithLabel } from '../date-picker-with-label/date-picker-with-
 import { SelectTrainingCenters } from '../select-training-centers/select-training-centers';
 import { SelectTrainingCourses } from '../select-training-courses/select-training-courses';
 import { AddNewTrainingSessionBusiness } from '../../services/commands/add-new-training-session-business';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'lfpa-add-new-session',
-  imports: [ReactiveFormsModule, SelectTrainingCourses, SelectTrainingCenters, DatePickerWithLabel, MatButtonModule],
+  imports: [ReactiveFormsModule, SelectTrainingCourses, SelectTrainingCenters, DatePickerWithLabel, MatButtonModule, MatInputModule],
   templateUrl: './add-new-session.html',
   styleUrl: './add-new-session.css',
 })
@@ -27,7 +28,6 @@ export class AddNewSession implements OnInit {
       });
     });
   }
-
 
   protected readonly sessionForm = this.formBuilder.nonNullable.group({
     courseCenterId: [0, Validators.required],
