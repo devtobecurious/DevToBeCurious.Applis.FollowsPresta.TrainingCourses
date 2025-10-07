@@ -1,3 +1,4 @@
+// Converted to run under Vitest (globals: describe, it, expect)
 import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';

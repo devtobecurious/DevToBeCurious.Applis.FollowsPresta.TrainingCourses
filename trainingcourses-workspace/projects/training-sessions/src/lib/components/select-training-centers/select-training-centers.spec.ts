@@ -1,3 +1,4 @@
+// Adapted for Vitest execution (describe/it/expect globals)
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectTrainingCenters } from './select-training-centers';
